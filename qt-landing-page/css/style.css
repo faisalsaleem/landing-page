@@ -2525,6 +2525,10 @@ Main Menu: Responsive
     visibility: visible;
   }
 
+  .horizontal-line{
+    display: none;
+  }
+
   /*Main Menu*/
   #mainMenun.menu-center nav {
     margin: 0px;
@@ -18437,6 +18441,20 @@ body[data-bg-image] {
 .tabcontrol > .content > .title {
   position: absolute;
   left: -999em;
+}
+
+  .hero_section {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 40px !important;
+  align-items: center !important;
+}
+
+@media (max-width: 768px) {
+  .hero_section {
+  display: flex !important;
+  flex-direction: column !important;
+}
 }
 
 @media (max-width: 576px) {
