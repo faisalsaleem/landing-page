@@ -128,6 +128,12 @@ section.dark,
   color: #999999;
 }
 
+#background-img {
+  background-image: url(../images/bg.jpg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
  /* ----------------------------------------------------------------------
     Page title
 -------------------------------------------------------------------------*/
@@ -14626,6 +14632,7 @@ Carousel: Dots
 }
 .flickity-page-dots .dot.is-selected:after {
   height: 100%;
+  background-color: white !important;
 }
 
 .inspiro-slider,
