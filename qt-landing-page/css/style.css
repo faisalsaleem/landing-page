@@ -133,6 +133,9 @@ section.dark,
   background-size: cover !important;
   background-position: center !important;
 }
+.color-black{
+  color: black !important;
+}
 
  /* ----------------------------------------------------------------------
     Page title
