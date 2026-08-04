@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="QuickTijarat business software demo and setup through WhatsApp.">
+    <title>QuickTijarat Demo and Setup</title>
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <style>
+        :root {
+            --ink: #17202a;
+            --muted: #5f6c78;
+            --line: #dce4ea;
+            --brand: #0d8fd7;
+            --brand-dark: #086699;
+            --whatsapp: #21c063;
+            --whatsapp-dark: #13964a;
+            --surface: #ffffff;
+            --wash: #f5f8fb;
+            --warm: #f4b84b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--wash);
+            line-height: 1.55;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            min-height: 76px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .logo img {
+            width: 174px;
+            max-width: 52vw;
+            height: auto;
+            display: block;
+        }
+
+        .phone-link {
+            color: var(--brand-dark);
+            font-size: 15px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .hero {
+            background:
+                linear-gradient(125deg, rgba(13, 143, 215, 0.12), rgba(244, 184, 75, 0.14)),
+                var(--surface);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+            gap: 44px;
+            align-items: center;
+            padding: 58px 0 42px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            color: var(--brand-dark);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--warm);
+        }
+
+        h1 {
+            max-width: 720px;
+            margin: 0;
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.04;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            max-width: 660px;
+            margin: 22px 0 0;
+            color: #344452;
+            font-size: 19px;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 66px;
+            padding: 0 28px;
+            border-radius: 8px;
+            background: var(--whatsapp);
+            color: #fff;
+            box-shadow: 0 18px 30px rgba(33, 192, 99, 0.28);
+            font-size: 20px;
+            font-weight: 800;
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+        }
+
+        .whatsapp-button:hover,
+        .whatsapp-button:focus {
+            background: var(--whatsapp-dark);
+            box-shadow: 0 22px 34px rgba(19, 150, 74, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            font-size: 21px;
+            line-height: 1;
+        }
+
+        .small-note {
+            max-width: 320px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .product-shot {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 24px 48px rgba(23, 32, 42, 0.14);
+            overflow: hidden;
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            height: 36px;
+            padding: 0 14px;
+            border-bottom: 1px solid var(--line);
+            background: #f8fafc;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #b8c3cc;
+        }
+
+        .dot:nth-child(1) {
+            background: #ef6b65;
+        }
+
+        .dot:nth-child(2) {
+            background: #f0be4f;
+        }
+
+        .dot:nth-child(3) {
+            background: #5fcf7a;
+        }
+
+        .product-shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .content-band {
+            padding: 42px 0 54px;
+        }
+
+        .section-title {
+            margin: 0 0 18px;
+            font-size: 28px;
+            line-height: 1.2;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            min-height: 170px;
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .info-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+            gap: 34px;
+            align-items: center;
+            margin-top: 42px;
+            padding: 32px;
+            border-radius: 8px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .steps p {
+            margin: 14px 0 0;
+            color: #d9e2ea;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .step-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .step-number {
+            display: inline-grid;
+            flex: 0 0 30px;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--warm);
+            color: #1f2933;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .final-cta {
+            padding: 38px 0 48px;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid var(--line);
+        }
+
+        .final-cta p {
+            max-width: 620px;
+            margin: 8px auto 22px;
+            color: var(--muted);
+        }
+
+        .footer {
+            padding: 22px 0;
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 860px) {
+            .topbar-inner {
+                min-height: 68px;
+            }
+
+            .phone-link {
+                display: none;
+            }
+
+            .hero-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                padding: 38px 0 34px;
+                gap: 30px;
+            }
+
+            .lead {
+                font-size: 17px;
+            }
+
+            .whatsapp-button {
+                width: 100%;
+                min-height: 70px;
+                font-size: 20px;
+            }
+
+            .small-note {
+                max-width: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header class="topbar">
+            <div class="shell topbar-inner">
+                <a class="logo" href="index.html" aria-label="QuickTijarat home">
+                    <img src="new-logo.jpg" alt="QuickTijarat">
+                </a>
+                <a class="phone-link" href="https://wa.me/923111123173" target="_blank" rel="noopener">WhatsApp: 03-111-123-173</a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="shell hero-grid">
+                <div>
+                    <p class="eyebrow">Business software demo</p>
+                    <h1>Run sales, inventory, and accounts from one simple system.</h1>
+                    <p class="lead">QuickTijarat is a SaaS business management application for shops, distributors, and growing companies. Talk to our sales team on WhatsApp, share your requirements, and we will arrange your demo and company setup.</p>
+                    <div class="cta-row">
+                        <a class="whatsapp-button" href="https://wa.me/923111123173?text=Hi%20QuickTijarat%2C%20I%20saw%20your%20YouTube%20ad%20and%20want%20a%20software%20demo." target="_blank" rel="noopener" aria-label="Chat with QuickTijarat sales team on WhatsApp">
+                            <span class="whatsapp-mark">&#9742;</span>
+                            Chat on WhatsApp
+                        </a>
+                        <span class="small-note">On mobile this opens WhatsApp Messenger. On desktop it opens WhatsApp Web so our team can guide you.</span>
+                    </div>
+                </div>
+
+                <div class="product-shot" aria-label="QuickTijarat dashboard preview">
+                    <div class="browser-bar" aria-hidden="true">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <img src="qt-dashboard.png" alt="QuickTijarat dashboard with sales and business reports">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-band">
+            <div class="shell">
+                <h2 class="section-title">What QuickTijarat helps you manage</h2>
+                <div class="info-grid">
+                    <article class="info-card">
+                        <strong>Sales and POS</strong>
+                        <p>Create sales, manage customers, and keep daily operations moving from a clean business workflow.</p>
+                    </article>
+                    <article class="info-card">
+                        <strong>Inventory control</strong>
+                        <p>Track stock, products, purchases, and availability so your team knows what is happening in real time.</p>
+                    </article>
+                    <article class="info-card">
+                        <strong>Accounts and reports</strong>
+                        <p>See invoices, balances, profit, expenses, and useful reports from one connected application.</p>
+                    </article>
+                </div>
+
+                <div class="steps">
+                    <div>
+                        <h2 class="section-title">How we start your account</h2>
+                        <p>Because every business is different, our team talks with you first. Then we prepare the right setup, demo, and login access for your company.</p>
+                    </div>
+                    <ol class="step-list">
+                        <li><span class="step-number">1</span><span>Send your business requirements on WhatsApp.</span></li>
+                        <li><span class="step-number">2</span><span>Our team gives you a product demo and answers questions.</span></li>
+                        <li><span class="step-number">3</span><span>We create your company account and help your team begin using QuickTijarat.</span></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="shell">
+                <h2 class="section-title">Ready to see QuickTijarat for your business?</h2>
+                <p>Message us now and our sales team will help you with demo details, pricing, setup, and account creation.</p>
+                <a class="whatsapp-button" href="https://wa.me/923111123173?text=Hi%20QuickTijarat%2C%20please%20help%20me%20set%20up%20a%20demo%20account." target="_blank" rel="noopener" aria-label="Request a QuickTijarat demo account on WhatsApp">
+                    <span class="whatsapp-mark">&#9742;</span>
+                    Request Demo on WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="shell">QuickTijarat &copy; 2026. Sales, inventory, accounts, and business reports in one place.</div>
+        </footer>
+    </main>
+</body>
+
+</html>
